@@ -7,6 +7,8 @@ class SignIn extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    TextTheme textTheme = Theme.of(context).textTheme;
+
     return Scaffold(
       appBar: AppBar(
         elevation: 0,
@@ -16,24 +18,37 @@ class SignIn extends StatelessWidget {
           statusBarIconBrightness: Brightness.dark,
         ),
       ),
-      body: SizedBox(
+      body: Container(
+        padding: const EdgeInsets.symmetric(horizontal: 16),
         width: double.infinity,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
-          children: const [
+          children: [
             Text(
               'Todoist',
-              style: TextStyle(
-                  fontSize: 36,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.black87),
+              style: textTheme.displaySmall?.copyWith(
+                fontWeight: FontWeight.bold,
+                color: Colors.black87,
+              ),
             ),
-            Gap(12),
+            const Gap(12),
             Text(
               'Organize your life using task management',
-              style: TextStyle(
-                fontSize: 16,
+              style: textTheme.subtitle1?.copyWith(
                 color: Colors.black54,
+              ),
+            ),
+            const Gap(60),
+            const TextField(
+              cursorHeight: 20,
+              decoration: InputDecoration(labelText: 'Email'),
+            ),
+            const Gap(20),
+            SizedBox(
+              width: double.infinity,
+              child: ElevatedButton(
+                onPressed: () {},
+                child: const Text('Sign in'),
               ),
             ),
           ],
